@@ -6,13 +6,15 @@ const RestaurantsIndexComponent = props => {
     const [restaurants, setRestaurants] = useState([])
 
     useEffect(()=> {
-    fetch('/api/v1/restaurants')
+    fetch('/api/v1/restaurants', {
+        credentials: "same-origin"
+    })
         .then(response => {
         if(response.ok) {
             return response
         } else {
-            let errorMessage = `${response.status} (${response.status_text})`
-            error = new Error(errorMessage)
+            let errorMessage = `${response.status} (${response.statusText})`
+                error = new Error(errorMessage)
             throw(error)
         }
     })
