@@ -2,9 +2,9 @@ import React from 'react'
 
 const RestaurantTile = props => {
 
-    return (
-        <div>{props.restaurant.name}</div>
-    )
+  return (
+    <div>{props.restaurant.name}</div>
+  )
 
 }
 
