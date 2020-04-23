@@ -11,7 +11,7 @@ const RestaurantsIndexComponent = props => {
         if(response.ok) {
             return response
         } else {
-            let errorMessage = `${response.status} (${response.status_text})`
+            let errorMessage = `${response.status} (${response.statusText})`
             error = new Error(errorMessage)
             throw(error)
         }

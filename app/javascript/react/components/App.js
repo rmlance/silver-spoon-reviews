@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
+import RestaurantShowContainer from './RestaurantShowContainer'
 import RestaurantsIndexComponent from './RestaurantsIndexComponent'
 
 export const App = (props) => {
@@ -9,6 +10,7 @@ export const App = (props) => {
       <Switch>
         <Route exact path='/' component={RestaurantsIndexComponent}></Route>
         <Route exact path='/restaurants' component={RestaurantsIndexComponent}></Route>
+        <Route exact path='/restaurants/:id' component={RestaurantShowContainer}></Route>
       </Switch>
     </BrowserRouter>
   )
