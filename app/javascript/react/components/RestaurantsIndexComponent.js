@@ -17,7 +17,6 @@ const RestaurantsIndexComponent = props => {
         error = new Error(errorMessage)
         throw(error)
       }
-
     })
     .then(response => response.json())
     .then(parsedRestaurantData => {

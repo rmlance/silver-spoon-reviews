@@ -19,14 +19,14 @@ const RestaurantShowContainer = props =>{
   fetch(`/api/v1/restaurants/${restaurantId}`, {
     credentials: "same-origin"
   })
-      .then(response =>{
-      if(response.ok) {
-        return response
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`
-          error = new Error(errorMessage)
-        throw(error)
-      }
+  .then(response =>{
+    if(response.ok) {
+      return response
+    } else {
+      let errorMessage = `${response.status} (${response.statusText})`
+        error = new Error(errorMessage)
+      throw(error)
+    }
   })
   .then(response => response.json())
   .then(parsedRestaurant => setRestaurant(parsedRestaurant.restaurant))
@@ -34,11 +34,9 @@ const RestaurantShowContainer = props =>{
   }, [])
 
   return(
-
     <div>
       <RestaurantShow restaurant={restaurant}  />
     </div>
-
   )
 }
 

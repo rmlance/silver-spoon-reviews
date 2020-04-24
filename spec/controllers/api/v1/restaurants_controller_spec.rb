@@ -41,19 +41,4 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       expect(returned_json["restaurant"]["address"]).to eq "300 Walker St"
     end
   end
-
-  describe "GET#show" do
-    it "should return an individual restaurant" do
-
-      get :show, params: {id: restaurant2.id}
-      returned_json = JSON.parse(response.body)
-
-      expect(response.status).to eq 200
-      expect(response.content_type).to eq("application/json")
-
-      expect(returned_json.length).to eq 1
-      expect(returned_json["restaurant"]["name"]).to eq "Pho"
-      expect(returned_json["restaurant"]["address"]).to eq "300 main St"
-    end
-  end
 end
