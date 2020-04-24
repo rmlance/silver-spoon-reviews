@@ -16,13 +16,31 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       get :index
       response_body = JSON.parse(response.body)
 
-      expect(response_body.length).to eq 2
+      expect(response_body["restaurants"].length).to eq 2
 
-      expect(response_body[0]["name"]).to eq restaurant1.name
-      expect(response_body[0]["address"]).to eq restaurant1.address
+      expect(response_body["restaurants"][0]["name"]).to eq restaurant1.name
+      expect(response_body["restaurants"][0]["address"]).to eq restaurant1.address
 
-      expect(response_body[1]["name"]).to eq restaurant2.name
-      expect(response_body[1]["address"]).to eq restaurant2.address
+      expect(response_body["restaurants"][1]["name"]).to eq restaurant2.name
+      expect(response_body["restaurants"][1]["address"]).to eq restaurant2.address
+    end
+  end
+
+  describe "GET#show" do
+    let!(:restaurant1) { Restaurant.create(name: "Soup Co", address:"300 Walker St", city:"Newton", state: "MA", phone: "781-908-5678", zip: "02582", url: "wwww.SoupCo.com", rating: 3) }
+
+    it "should return an individual restaurant" do
+
+      get :show, params: {id: restaurant1.id}
+      binding.pry
+      returned_json = JSON.parse(response.body)
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json.length).to eq 9
+      expect(returned_json["restaurants"][0]["name"]).to eq "Soup Co"
+      expect(returned_json["restaurants"][0]["address"]).to eq "300 Walker St"
+
     end
   end
 end

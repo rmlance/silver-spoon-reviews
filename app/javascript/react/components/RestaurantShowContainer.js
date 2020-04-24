@@ -16,7 +16,6 @@ const RestaurantShowContainer = props =>{
   const restaurantId = props.match.params.id
 
   useEffect(()=> {
-
   fetch(`/api/v1/restaurants/${restaurantId}`, {
     credentials: "same-origin"
   })
