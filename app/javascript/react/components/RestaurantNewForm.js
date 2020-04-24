@@ -20,8 +20,11 @@ const RestaurantNewForm = props => {
     })
   }
 
+  // valid submission method
+
   const handleSubmit = event => {
     event.preventDefault()
+    // if valid move on else raise errors
     props.addNewRestaurant(newFormPayload)
     setNewFormPayload({
       name: "",
