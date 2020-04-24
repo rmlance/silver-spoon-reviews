@@ -1,6 +1,6 @@
 class Api::V1::RestaurantsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  before_action :authorize_user, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize_user, except: [:index,:show]
 
   def index
     render json: Restaurant.all
