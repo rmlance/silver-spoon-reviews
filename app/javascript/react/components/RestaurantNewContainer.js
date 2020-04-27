@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 
 import RestaurantNewForm from './RestaurantNewForm'
 
 const RestaurantNewContainer = props => {
-  // const [redirect, setRedirect] = useState(false)
+  const [redirect, setRedirect] = useState(false)
+  const [restaurant, setRestaurant] = useState({})
 
   const addNewRestaurant = (formPayload) => {
     fetch('/api/v1/restaurants', {
@@ -26,9 +28,15 @@ const RestaurantNewContainer = props => {
     })
     .then(response => response.json())
     .then(parsedNewRestaurant => {
-      // setRedirect(true))
+      let restaurant = parsedNewRestaurant.restaurant
+      setRestaurant(restaurant)
+      setRedirect(true)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  if (redirect) {
+    return <Redirect to={`/restaurants/${restaurant.id}`} />
   }
 
   return (

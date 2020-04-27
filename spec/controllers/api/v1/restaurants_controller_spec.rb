@@ -41,4 +41,90 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       expect(returned_json["restaurant"]["address"]).to eq "300 Walker St"
     end
   end
+
+  describe "POST#create" do
+    it "creates a new restaurant" do
+      user = FactoryBot.create(:user)
+      sign_in user
+      post_json = {
+        restaurant:
+          { name: "Top of the Hub",
+            address: "40 Main Street",
+            city: "Boston",
+            state: "MA",
+            zip: "01414",
+            phone: "123-341-1234"
+            }
+          }
+
+      prev_count = Restaurant.count
+      post(:create, params: post_json, format: :json)
+      expect(Restaurant.count).to eq(prev_count + 1)
+    end
+  end
+
+  it "returns the json of the newly posted restaurant" do
+    user = FactoryBot.create(:user)
+    sign_in user
+    post_json = {
+      restaurant:
+        { name: "Top of the Hub",
+          address: "40 Main Street",
+          city: "Boston",
+          state: "MA",
+          zip: "01414",
+          phone: "123-341-1234"
+          }
+        }
+
+    post(:create, params: post_json, format: :json)
+    returned_json = JSON.parse(response.body)
+    expect(response.status).to eq 200
+    expect(response.content_type).to eq("application/json")
+
+    expect(returned_json).to be_kind_of(Hash)
+    expect(returned_json).to_not be_kind_of(Array)
+    expect(returned_json["restaurant"]["name"]).to eq "Top of the Hub"
+    expect(returned_json["restaurant"]["city"]).to eq "Boston"
+  end
+
+  it "data is not persisted if form is not valid when submitted" do
+    user = FactoryBot.create(:user)
+    sign_in user
+    post_json = {
+      restaurant:
+        { address: "40 Main Street",
+          city: "Boston",
+          state: "MA",
+          zip: "01414",
+          phone: "123-341-1234"
+          }
+        }
+
+    prev_count = Restaurant.count
+    post(:create, params: post_json, format: :json)
+    new_count = Restaurant.count
+
+    expect(new_count).to eq prev_count
+  end
+
+  it "returns an error when required field is blank" do
+    user = FactoryBot.create(:user)
+    sign_in user
+    post_json = {
+      restaurant:
+        { address: "40 Main Street",
+          city: "Boston",
+          state: "MA",
+          zip: "01414",
+          phone: "123-341-1234"
+          }
+        }
+
+    post(:create, params: post_json, format: :json)
+    returned_json = JSON.parse(response.body)
+
+    expect(returned_json["error"][0]).to eq "Name can't be blank"
+  end
+
 end

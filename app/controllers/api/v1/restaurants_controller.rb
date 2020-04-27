@@ -1,5 +1,5 @@
 class Api::V1::RestaurantsController < ApplicationController
-  before_action :authenticate_user, except: [:index]
+  before_action :authenticate_user, except: [:index, :show]
 
   def index
     render json: Restaurant.all
@@ -14,8 +14,9 @@ class Api::V1::RestaurantsController < ApplicationController
     if restaurant.save
       render json: { restaurant: restaurant }
     else
-      render json: { error: restaurant.errors.full_messages }, status: :unprocessable_entity 
+      render json: { error: restaurant.errors.full_messages }, status: :unprocessable_entity
     end
+  end
 
   def show
     render json: Restaurant.find(params[:id])
