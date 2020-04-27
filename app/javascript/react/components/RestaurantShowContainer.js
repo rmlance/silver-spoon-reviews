@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import RestaurantShow from './RestaurantShow'
+import ReviewsContainer from './ReviewsContainer'
+
 
 const RestaurantShowContainer = props =>{
   const [restaurant, setRestaurant] = useState({
@@ -13,6 +15,8 @@ const RestaurantShowContainer = props =>{
     image_url: "",
     rating: null
   })
+
+
   const restaurantId = props.match.params.id
 
   useEffect(()=> {
@@ -35,7 +39,8 @@ const RestaurantShowContainer = props =>{
 
   return(
     <div>
-      <RestaurantShow restaurant={restaurant}  />
+      <RestaurantShow restaurant={restaurant}/>
+      <ReviewsContainer pageId={restaurantId}/>
     </div>
   )
 }
