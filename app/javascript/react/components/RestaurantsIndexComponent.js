@@ -19,9 +19,12 @@ const RestaurantsIndexComponent = props => {
       }
     })
     .then(response => response.json())
-    .then(parsedRestaurantData => setRestaurants(parsedRestaurantData))
+    .then(parsedRestaurantData => {
+      setRestaurants(parsedRestaurantData.restaurants)
+    })
     .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])
+
 
   const restaurantsList = restaurants.map(restaurant => {
     return (

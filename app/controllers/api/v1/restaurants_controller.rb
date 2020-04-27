@@ -16,6 +16,9 @@ class Api::V1::RestaurantsController < ApplicationController
     else
       render json: { error: restaurant.errors.full_messages }, status: :unprocessable_entity 
     end
+
+  def show
+    render json: Restaurant.find(params[:id])
   end
 
   protected
