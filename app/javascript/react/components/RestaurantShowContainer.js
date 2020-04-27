@@ -5,13 +5,9 @@ const RestaurantShowContainer = props =>{
   const [restaurant, setRestaurant] = useState({
     name: "",
     address: "",
-    city: "",
-    state: "",
-    zip: "",
+    neighborhood: "",
     phone: "",
-    url: "",
-    image_url: "",
-    rating: null
+    url: ""
   })
   const restaurantId = props.match.params.id
 
