@@ -47,8 +47,8 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       user = FactoryBot.create(:user)
       sign_in user
       post_json = {
-        restaurant:
-          { name: "Top of the Hub",
+        restaurant: {
+            name: "Top of the Hub",
             address: "40 Main Street",
             city: "Boston",
             state: "MA",
@@ -67,8 +67,8 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
     user = FactoryBot.create(:user)
     sign_in user
     post_json = {
-      restaurant:
-        { name: "Top of the Hub",
+      restaurant: {
+          name: "Top of the Hub",
           address: "40 Main Street",
           city: "Boston",
           state: "MA",
@@ -92,8 +92,8 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
     user = FactoryBot.create(:user)
     sign_in user
     post_json = {
-      restaurant:
-        { address: "40 Main Street",
+      restaurant: {
+          address: "40 Main Street",
           city: "Boston",
           state: "MA",
           zip: "01414",
@@ -112,8 +112,8 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
     user = FactoryBot.create(:user)
     sign_in user
     post_json = {
-      restaurant:
-        { address: "40 Main Street",
+      restaurant: {
+          address: "40 Main Street",
           city: "Boston",
           state: "MA",
           zip: "01414",

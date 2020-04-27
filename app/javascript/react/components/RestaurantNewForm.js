@@ -156,7 +156,6 @@ const RestaurantNewForm = props => {
       <input className="button" type="submit" value="Submit" />
       </div>
       </form>
-
     )
   }
 
