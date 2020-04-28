@@ -10,6 +10,7 @@ class Api::V1::RestaurantsController < ApplicationController
     render json: Restaurant.find(params[:id])
   end
 
+
   protected
 
   def authorize_user

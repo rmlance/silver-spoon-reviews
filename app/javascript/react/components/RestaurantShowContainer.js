@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import RestaurantShow from './RestaurantShow'
+import ReviewShow from './ReviewShow'
 
 const RestaurantShowContainer = props =>{
   const [restaurant, setRestaurant] = useState({
@@ -13,6 +14,8 @@ const RestaurantShowContainer = props =>{
     image_url: "",
     rating: null
   })
+
+
   const restaurantId = props.match.params.id
 
   useEffect(()=> {
@@ -30,14 +33,25 @@ const RestaurantShowContainer = props =>{
   })
   .then(response => response.json())
   .then(parsedRestaurant => setRestaurant(parsedRestaurant.restaurant))
+
   .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])
 
+
+
   return(
     <div>
-      <RestaurantShow restaurant={restaurant}  />
+      <RestaurantShow
+      restaurant={restaurant}
+     />
+     <ReviewShow
+     reviews={restaurant.reviews}
+     />
+
     </div>
   )
+
+
 }
 
 export default RestaurantShowContainer

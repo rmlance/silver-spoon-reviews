@@ -1,7 +1,6 @@
 import React from 'react'
 
 const RestaurantShow = props =>{
-
   return(
     <div>
       <h3>{props.restaurant.name}</h3>
@@ -10,6 +9,7 @@ const RestaurantShow = props =>{
       <p>{props.restaurant.city}, {props.restaurant.state} {props.restaurant.zip}</p>
       <p>Phone Number: {props.restaurant.phone}</p>
       <p>Rating: {props.restaurant.rating}</p>
+
     </div>
   )
 }
