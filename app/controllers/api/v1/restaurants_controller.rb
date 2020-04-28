@@ -22,6 +22,19 @@ class Api::V1::RestaurantsController < ApplicationController
     render json: Restaurant.find(params[:id])
   end
 
+  def edit
+    render json: Restaurant.find(params[:id])
+  end
+
+  def update
+    restaurant = Restaurant.find(params[:id])
+    if restaurant.save
+      render json: { restaurant: restaurant }
+    else
+      render json: { error: restaurant.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   protected
 
   def restaurant_params

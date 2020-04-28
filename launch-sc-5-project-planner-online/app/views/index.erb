@@ -1,0 +1,11 @@
+<h1>PROJECTS!</h1>
+<ul>
+    <% @userprojects.each do |project| %>
+      <a href="/projects/<%=project.id%>"
+        <li>
+        <%= project.name %><br></br>
+
+        </li>
+      </a>
+    <% end %>
+</ul>

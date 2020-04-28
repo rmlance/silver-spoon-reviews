@@ -10,36 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_185103) do
+ActiveRecord::Schema.define(version: 2020_04_10_151133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "restaurants", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.string "name", null: false
-    t.string "address", null: false
-    t.string "phone", null: false
-    t.string "url"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "neighborhood", null: false
-    t.bigint "user_id"
+  end
+
+  create_table "userprojects", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_userprojects_on_project_id"
+    t.index ["user_id"], name: "index_userprojects_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "role", default: "member", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "restaurants", "users"
 end

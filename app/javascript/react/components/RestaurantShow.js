@@ -11,6 +11,7 @@ const RestaurantShow = props =>{
       <p>{props.restaurant.neighborhood}</p>
       <p>Phone Number: {props.restaurant.phone}</p>
       <p>URL: {props.restaurant.url}</p>
+      <Link to={`/api/v1/restaurants/${props.restaurant.id}/edit`}>Edit this Restaurant</Link><br />
       <Link to="/restaurants/new">Add a Restaurant</Link><br />
       <Link to="/">Back to Home</Link>
     </div>
