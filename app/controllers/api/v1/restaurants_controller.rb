@@ -7,7 +7,12 @@ class Api::V1::RestaurantsController < ApplicationController
   end
 
   def show
-    render json: Restaurant.find(params[:id])
+    restaurant = Restaurant.find(params[:id])
+    review = restaurant.reviews
+    render json: {
+      restaurant: restaurant,
+      review: review
+    }
   end
 
   protected

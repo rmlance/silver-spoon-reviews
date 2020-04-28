@@ -6,7 +6,7 @@ const ReviewsContainer = props =>{
   const [reviews, setReviews] = useState([])
 
   useEffect(()=> {
-    fetch(`/api/v1/restaurants/${props.pageId}/reviews`, {
+    fetch(`/api/v1/restaurants/${props.pageId}`, {
       credentials: "same-origin"
     })
     .then(response =>{
@@ -20,7 +20,7 @@ const ReviewsContainer = props =>{
     })
     .then(response => response.json())
     .then(parsedReviews => {
-      setReviews(parsedReviews)
+      setReviews(parsedReviews.review)
     })
     .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])

@@ -33,7 +33,9 @@ const RestaurantShowContainer = props =>{
     }
   })
   .then(response => response.json())
-  .then(parsedRestaurant => setRestaurant(parsedRestaurant.restaurant))
+  .then(parsedRestaurant => {
+    setRestaurant(parsedRestaurant.restaurant)
+  })
   .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])
 
