@@ -23,7 +23,7 @@ const RestaurantNewForm = props => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["name", "address", "neighborhood", "phone", "url"]
+    const requiredFields = ["name", "address", "neighborhood", "phone"]
     requiredFields.forEach(field => {
       if (newFormPayload[field].trim() === "") {
         submitErrors = {
