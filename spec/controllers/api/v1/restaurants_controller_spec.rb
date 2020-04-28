@@ -38,7 +38,7 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       expect(response.content_type).to eq("application/json")
 
       expect(returned_json.length).to eq 2
-      expect(returned_json["restaurant"].length).to eq 12
+      expect(returned_json["restaurant"].length).to eq 8
       expect(returned_json["review"][0].length).to eq 6
 
       expect(returned_json["restaurant"]["name"]).to eq "Soup Co"
