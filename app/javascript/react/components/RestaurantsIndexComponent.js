@@ -36,8 +36,10 @@ const RestaurantsIndexComponent = props => {
   })
 
   return (
-    <div>
-    {restaurantsList}
+    <div className="grid-container">
+      <div className="grid-x grid-margin-x">
+        {restaurantsList}
+      </div>
     </div>
   )
 }
