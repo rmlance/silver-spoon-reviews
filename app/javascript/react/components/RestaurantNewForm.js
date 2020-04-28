@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import _ from "lodash"
+import { Link } from 'react-router-dom'
 
 import ErrorList from "./ErrorList"
 
@@ -8,13 +9,9 @@ const RestaurantNewForm = props => {
   const [newFormPayload, setNewFormPayload] = useState({
     name: "",
     address: "",
-    city: "",
-    state: "",
-    zip: "",
+    neighborhood: "",
     phone: "",
-    url: "",
-    image_url: "",
-    rating: ""
+    url: ""
   })
 
   const handleInputChange = event => {
@@ -26,7 +23,7 @@ const RestaurantNewForm = props => {
 
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["name", "address", "city", "state", "zip", "phone"]
+    const requiredFields = ["name", "address", "neighborhood", "phone", "url"]
     requiredFields.forEach(field => {
       if (newFormPayload[field].trim() === "") {
         submitErrors = {
@@ -46,13 +43,9 @@ const RestaurantNewForm = props => {
       setNewFormPayload({
         name: "",
         address: "",
-        city: "",
-        state: "",
-        zip: "",
+        neighborhood: "",
         phone: "",
-        url: "",
-        image_url: "",
-        rating: ""
+        url: ""
       })
       setErrors({})
     }
@@ -81,34 +74,14 @@ const RestaurantNewForm = props => {
             value={newFormPayload.address}
           />
         </label>
-        <label className="city">
-          City:
+        <label className="neighborhood">
+          Neighborhood:
           <input
-            name="city"
-            id="city"
+            name="neighborhood"
+            id="neighborhood"
             type="text"
             onChange={handleInputChange}
-            value={newFormPayload.city}
-          />
-        </label>
-        <label className="state">
-          State:
-          <input
-            name="state"
-            id="state"
-            type="text"
-            onChange={handleInputChange}
-            value={newFormPayload.state}
-          />
-        </label>
-        <label className="zip">
-          Zip Code:
-          <input
-            name="zip"
-            id="zip"
-            type="text"
-            onChange={handleInputChange}
-            value={newFormPayload.zip}
+            value={newFormPayload.neighborhood}
           />
         </label>
         <label className="phone">
@@ -131,30 +104,11 @@ const RestaurantNewForm = props => {
             value={newFormPayload.url}
           />
         </label>
-        <label className="image_url">
-          Image (optional):
-          <input
-            name="image_url"
-            id="image_url"
-            type="text"
-            onChange={handleInputChange}
-            value={newFormPayload.image_url}
-          />
-        </label>
-        <label className="rating">
-          Rating:
-          <input
-            name="rating"
-            id="rating"
-            type="text"
-            onChange={handleInputChange}
-            value={newFormPayload.rating}
-          />
-        </label>
 
       <div className="button-group">
         <input className="button" type="submit" value="Add New Restaurant" />
       </div>
+      <Link to="/">Back to Home</Link>
       </form>
     )
   }

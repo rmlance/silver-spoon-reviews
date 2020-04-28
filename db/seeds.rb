@@ -4,3 +4,5 @@ Restaurant.create(name: "Blue Dragon", address:"50 Melcher Street", neighborhood
 Restaurant.create(name: "The Palm", address:"19 Atlantic Ave", neighborhood:"Financial District", phone: "617-123-5438", url: "wwww.thepalm.com")
 Restaurant.create(name: "Tiger Mama", address: "1363 Boylston Street", neighborhood:"Fenway", phone: "781-906-1234", url: "wwww.tigermama.com")
 Restaurant.create(name: "Top of the Hub", address:"33 Bird Way", neighborhood:"Prudential", phone: "781-785-9091", url: "wwww.topofthehub.com")
+
+User.create(email: "fake@email.com", password: "123456", role: "admin", first_name: "Guy", last_name: "Admin")
