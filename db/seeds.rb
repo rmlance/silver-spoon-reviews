@@ -1,16 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-Restaurant.create(name: "Smith & Wollensky's", address:"300 Washington St", city:"Wellesley", state: "MA", phone: "781-234-5678", zip: "02482", url: "wwww.Smithandwollenksys.com", rating: 5)
-Restaurant.create(name: "Paramount", address:"420 W Broadway St", city:"Boston", state: "MA",zip: "02127", phone: "123-456-7890",  url: "wwww.paramountboston.com", rating: 5)
-Restaurant.create(name: "Legal Seafood", address:"580 Seaport Blvd", city:"Boston", state: "MA",zip: "02115", phone: "617-543-2125", url: "wwww.LegalSeafood.com", rating: 4)
+Restaurant.create(name: "Smith & Wollensky's", address:"300 Washington St", neighborhood:"South End", phone: "781-234-5678", url: "wwww.Smithandwollenksys.com")
+Restaurant.create(name: "Menton", address:"28 Congress Street", neighborhood:"Fort Point", phone: "617-212-5948", url: "wwww.menton.com")
+Restaurant.create(name: "Blue Dragon", address:"50 Melcher Street", neighborhood:"Fort Point", phone: "617-564-1578", url: "wwww.bluedragon.com")
+Restaurant.create(name: "The Palm", address:"19 Atlantic Ave", neighborhood:"Financial District", phone: "617-123-5438", url: "wwww.thepalm.com")
+Restaurant.create(name: "Tiger Mama", address: "1363 Boylston Street", neighborhood:"Fenway", phone: "781-906-1234", url: "wwww.tigermama.com")
+Restaurant.create(name: "Top of the Hub", address:"33 Bird Way", neighborhood:"Prudential", phone: "781-785-9091", url: "wwww.topofthehub.com")
 
 Review.create(rating: 4, description: "It was great", restaurant_id: 1)
 Review.create(rating: 5, description: "Excellent", restaurant_id: 1)
 Review.create(rating: 1, description: "The chef threw a knife at me", restaurant_id: 2)
 Review.create(rating: 1, description: "My wife left me here...", restaurant_id: 2)
+
+User.create(email: "fake@email.com", password: "123456", role: "admin", first_name: "Guy", last_name: "Admin")

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import RestaurantTile from './RestaurantTile'
 
@@ -36,8 +37,11 @@ const RestaurantsIndexComponent = props => {
   })
 
   return (
-    <div>
-    {restaurantsList}
+    <div className="grid-container">
+      <div className="grid-x grid-margin-x">
+        {restaurantsList}
+      </div>
+      <Link to="/restaurants/new">Add a Restaurant</Link>
     </div>
   )
 }
