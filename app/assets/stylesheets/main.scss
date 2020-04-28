@@ -1,0 +1,39 @@
+@import url('https://fonts.google.com/specimen/Buenard');
+
+body {
+  background-color: #D9CEB2;
+}
+
+.grid-x {
+  margin: 15px 25px 15px 25px;
+}
+
+.callout {
+  margin: 15px 15px 15px 15px;
+  background-color: #948C75;
+  padding: 60px 10px 60px 10px;
+  border-color: #D5DED9;
+}
+
+.top-bar, .top-bar-text, a {
+  font-family: 'Buenard', serif;
+  color: #D5DED9;
+}
+
+h3, h1, h2 {
+  font-family: 'Buenard', serif;
+  color: #D5DED9;
+  font-weight: 450;
+}
+
+.top-bar-section, .right, p {
+  background-color: #99B2B7;
+}
+
+.top-bar {
+  background-color: #99B2B7;
+}
+
+p {
+  color: #99B2B7;
+}

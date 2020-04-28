@@ -37,9 +37,11 @@ const RestaurantsIndexComponent = props => {
   })
 
   return (
-    <div>
-    {restaurantsList}
-    <Link to="/restaurants/new">Add a Restaurant</Link>
+    <div className="grid-container">
+      <div className="grid-x grid-margin-x">
+        {restaurantsList}
+      </div>
+      <Link to="/restaurants/new">Add a Restaurant</Link>
     </div>
   )
 }
