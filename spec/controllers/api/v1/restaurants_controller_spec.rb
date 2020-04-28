@@ -50,10 +50,9 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
         restaurant: {
             name: "Top of the Hub",
             address: "40 Main Street",
-            city: "Boston",
-            state: "MA",
-            zip: "01414",
-            phone: "123-341-1234"
+            neighborhood: "Prudential",
+            phone: "123-341-1234",
+            url: "www.topofthehub.com"
             }
           }
 
@@ -70,10 +69,9 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       restaurant: {
           name: "Top of the Hub",
           address: "40 Main Street",
-          city: "Boston",
-          state: "MA",
-          zip: "01414",
-          phone: "123-341-1234"
+          neighborhood: "Prudential",
+          phone: "123-341-1234",
+          url: "www.topofthehub.com"
           }
         }
 
@@ -85,7 +83,7 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
     expect(returned_json).to be_kind_of(Hash)
     expect(returned_json).to_not be_kind_of(Array)
     expect(returned_json["restaurant"]["name"]).to eq "Top of the Hub"
-    expect(returned_json["restaurant"]["city"]).to eq "Boston"
+    expect(returned_json["restaurant"]["neighborhood"]).to eq "Prudential"
   end
 
   it "data is not persisted if form is not valid when submitted" do
@@ -114,10 +112,9 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
     post_json = {
       restaurant: {
           address: "40 Main Street",
-          city: "Boston",
-          state: "MA",
-          zip: "01414",
-          phone: "123-341-1234"
+          neighborhood: "Boston",
+          phone: "123-341-1234",
+          url: "www.noname.com"
           }
         }
 
