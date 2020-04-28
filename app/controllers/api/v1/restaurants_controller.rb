@@ -25,8 +25,7 @@ class Api::V1::RestaurantsController < ApplicationController
   protected
 
   def restaurant_params
-    params.require(:restaurant).permit(
-      :name, :address, :city, :state, :zip, :phone, :rating, :url, :image_url)
+    params.require(:restaurant).permit(:name, :address, :neighborhood, :phone, :url)
   end
 
   def authenticate_user

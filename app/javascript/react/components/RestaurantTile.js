@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const RestaurantTile = props => {
 
   return (
     <div  className="cell callout text-center medium-4">
       <h3>
-        {props.restaurant.name}
-        </h3>
+        <Link to={`/restaurants/${props.restaurant.id}`}>{props.restaurant.name}</Link>
+      </h3>
     </div>
   )
 }
