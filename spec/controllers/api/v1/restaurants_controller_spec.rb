@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::RestaurantsController, type: :controller do
-  let!(:restaurant1) { Restaurant.create(name: "Soup Co", address:"300 Walker St", city:"Newton", state: "MA", phone: "781-908-5678", zip: "02582", url: "wwww.SoupCo.com", rating: 3) }
-  let!(:restaurant2) { Restaurant.create(name: "Pho", address:"300 main St", city:"natick", state: "MA", phone: "781-237-5678", zip: "02452", url: "wwww.pho.com", rating: 5) }
+  let!(:restaurant1) { Restaurant.create(name: "Soup Co", address:"300 Walker St", neighborhood:"Newton", phone: "781-908-5678", url: "wwww.SoupCo.com") }
+  let!(:restaurant2) { Restaurant.create(name: "Pho", address:"300 main St", neighborhood:"natick", phone: "781-237-5678", url: "wwww.pho.com") }
 
   describe "GET#index" do
     it "returns a sucessful response status and a content type of json" do
