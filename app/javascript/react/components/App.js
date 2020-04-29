@@ -14,7 +14,7 @@ export const App = (props) => {
         <Route exact path='/restaurants' component={RestaurantsIndexComponent}></Route>
         <Route exact path='/restaurants/new' component={RestaurantNewContainer}></Route>
         <Route exact path='/restaurants/:id' component={RestaurantShowContainer}></Route>
-        <Route exact path='/api/v1/restaurants/:id/edit' component={RestaurantEditContainer}></Route>
+        <Route exact path='/restaurants/:id/edit' component={RestaurantEditContainer}></Route>
       </Switch>
     </BrowserRouter>
   )

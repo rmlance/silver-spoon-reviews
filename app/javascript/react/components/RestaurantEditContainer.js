@@ -30,7 +30,6 @@ const RestaurantEditContainer = props =>{
     })
     .then(response => response.json())
     .then(parsedRestaurant => {
-
       let restaurant = parsedRestaurant.restaurant
       setEditRestaurantField(restaurant)
       setRedirect(true)
