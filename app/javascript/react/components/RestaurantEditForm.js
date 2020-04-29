@@ -52,65 +52,67 @@ const RestaurantEditForm = props =>{
   }
 
   return(
-  <form onSubmit={handleSubmit}>
-    <ErrorList errors={errors} />
-    <label className="name">
-      Name:
-      <input
-        name="name"
-        id="name"
-        type="text"
-        onChange={handleInputChange}
-        value={editFormPayload.name}
-      />
-    </label>
-    <label className="address">
-      Street Address:
-      <input
-        name="address"
-        id="address"
-        type="text"
-        onChange={handleInputChange}
-        value={editFormPayload.address}
-      />
-    </label>
-    <label className="neighborhood">
-      Neighborhood:
-      <input
-        name="neighborhood"
-        id="neighborhood"
-        type="text"
-        onChange={handleInputChange}
-        value={editFormPayload.neighborhood}
-      />
-    </label>
-    <label className="phone">
-      Phone Number:
-      <input
-        name="phone"
-        id="phone"
-        type="text"
-        onChange={handleInputChange}
-        value={editFormPayload.phone}
-      />
-    </label>
-    <label className="url">
-      Website:
-      <input
-        name="url"
-        id="url"
-        type="text"
-        onChange={handleInputChange}
-        value={editFormPayload.url}
-      />
-    </label>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <ErrorList errors={errors} />
+        <label className="name">
+          Name:
+          <input
+            name="name"
+            id="name"
+            type="text"
+            onChange={handleInputChange}
+            value={editFormPayload.name}
+          />
+        </label>
+        <label className="address">
+          Street Address:
+          <input
+            name="address"
+            id="address"
+            type="text"
+            onChange={handleInputChange}
+            value={editFormPayload.address}
+          />
+        </label>
+        <label className="neighborhood">
+          Neighborhood:
+          <input
+            name="neighborhood"
+            id="neighborhood"
+            type="text"
+            onChange={handleInputChange}
+            value={editFormPayload.neighborhood}
+          />
+        </label>
+        <label className="phone">
+          Phone Number:
+          <input
+            name="phone"
+            id="phone"
+            type="text"
+            onChange={handleInputChange}
+            value={editFormPayload.phone}
+          />
+        </label>
+        <label className="url">
+          Website:
+          <input
+            name="url"
+            id="url"
+            type="text"
+            onChange={handleInputChange}
+            value={editFormPayload.url}
+          />
+        </label>
 
-  <div className="button-group">
-    <input className="button" type="submit" value="Update Restaurant" />
+        <div className="button-group">
+          <input className="button" type="submit" value="Update Restaurant" />
+        </div>
+      </form>
+    <Link to={`/restaurants/${props.id}`}>Back to Details</Link><br />
+    <Link to="/">Back to Home</Link>
   </div>
-  <Link to={`/restaurants/${props.id}`}>Back to Details</Link><br />
-  <Link to="/">Back to Home</Link>
-  </form>
   )
 }
 

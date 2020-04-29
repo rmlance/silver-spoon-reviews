@@ -20,9 +20,13 @@ class Api::V1::RestaurantsController < ApplicationController
 
   def update
     restaurant = Restaurant.find(params[:id])
-    restaurant.update(restaurant_params)
-    if restaurant.save
+    validUpdate = Restaurant.new(restaurant_params)
+    if validUpdate.valid?
+      restaurant.update(restaurant_params)
+      restaurant.save
       render json: { restaurant: restaurant }
+    else
+      render json: { error: validUpdate.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

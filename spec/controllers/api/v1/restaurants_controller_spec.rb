@@ -134,4 +134,16 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       expect(returned_json["restaurant"]["name"]).to eq "Top of the Hub"
       expect(returned_json["restaurant"]["neighborhood"]).to eq "Prudential"
     end
+
+    it "returns an error when required field is blank" do
+      sad_body = { id: restaurant1.id, restaurant: { address: "40 Main Street", neighborhood: "Prudential", phone: "123-341-1234", url: "www.topofthehub.com" } }
+      user = FactoryBot.create(:user)
+      sign_in user
+      post_json = sad_body
+
+      post :update, params: post_json, format: :json
+      returned_json = JSON.parse(response.body)
+
+      expect(returned_json["error"][0]).to eq "Name can't be blank"
+    end
 end
