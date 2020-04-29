@@ -5,10 +5,6 @@ class Api::V1::RestaurantsController < ApplicationController
     render json: Restaurant.all
   end
 
-  def new
-    render json: Restaurant.new
-  end
-
   def create
     restaurant = Restaurant.new(restaurant_params)
     if restaurant.save
@@ -20,6 +16,18 @@ class Api::V1::RestaurantsController < ApplicationController
 
   def show
     render json: Restaurant.find(params[:id])
+  end
+
+  def update
+    restaurant = Restaurant.find(params[:id])
+    validUpdate = Restaurant.new(restaurant_params)
+    if validUpdate.valid?
+      restaurant.update(restaurant_params)
+      restaurant.save
+      render json: { restaurant: restaurant }
+    else
+      render json: { error: validUpdate.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   protected
