@@ -37,15 +37,17 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
 
-      expect(returned_json.length).to eq 2
-      expect(returned_json["restaurant"].length).to eq 8
-      expect(returned_json["review"][0].length).to eq 6
+      expect(returned_json.length).to eq 1
+      expect(returned_json["restaurant"].length).to eq 7
+
+      expect(returned_json["restaurant"]["reviews"].length).to eq 1
+      expect(returned_json["restaurant"]["reviews"][0].length).to eq 4
 
       expect(returned_json["restaurant"]["name"]).to eq "Soup Co"
       expect(returned_json["restaurant"]["address"]).to eq "300 Walker St"
 
-      expect(returned_json["review"][0]["rating"]).to eq 4
-      expect(returned_json["review"][0]["description"]).to eq "Waffle fries for the guys"
+      expect(returned_json["restaurant"]["reviews"][0]["rating"]).to eq 4
+      expect(returned_json["restaurant"]["reviews"][0]["description"]).to eq "Waffle fries for the guys"
     end
   end
 
