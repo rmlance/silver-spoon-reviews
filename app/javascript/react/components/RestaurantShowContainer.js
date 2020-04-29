@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import RestaurantShow from './RestaurantShow'
+import ReviewTile from './ReviewTile'
+
 
 const RestaurantShowContainer = props =>{
   const [restaurant, setRestaurant] = useState({
@@ -9,6 +11,8 @@ const RestaurantShowContainer = props =>{
     phone: "",
     url: ""
   })
+  const [restaurantReviews, setRestaurantReviews] = useState([])
+
   const restaurantId = props.match.params.id
 
   useEffect(()=> {
@@ -25,13 +29,27 @@ const RestaurantShowContainer = props =>{
     }
   })
   .then(response => response.json())
-  .then(parsedRestaurant => setRestaurant(parsedRestaurant.restaurant))
+  .then(parsedRestaurant => {
+    setRestaurant(parsedRestaurant.restaurant)
+    setRestaurantReviews(parsedRestaurant.restaurant.reviews)
+  })
   .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])
 
+  const reviewsList = restaurantReviews.map(review => {
+    return (
+      <ReviewTile
+      key={review.id}
+      rating={review.rating}
+      description={review.description}
+      />
+    )
+  })
+
   return(
     <div>
-      <RestaurantShow restaurant={restaurant}  />
+      <RestaurantShow restaurant={restaurant}/>
+      {reviewsList}
     </div>
   )
 }

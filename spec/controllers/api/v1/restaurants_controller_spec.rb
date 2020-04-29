@@ -5,6 +5,7 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
   let!(:restaurant2) { Restaurant.create(name: "Pho", address:"300 main St", neighborhood:"natick", phone: "781-237-5678", url: "wwww.pho.com") }
   happy_body = { restaurant: { name: "Top of the Hub", address: "40 Main Street", neighborhood: "Prudential", phone: "123-341-1234", url: "www.topofthehub.com" } }
   sad_body = { restaurant: { address: "40 Main Street", neighborhood: "Prudential", phone: "123-341-1234", url: "www.topofthehub.com" } }
+  let!(:review1) { Review.create(rating: 4, description: "Waffle fries for the guys", restaurant: restaurant1) }
 
   describe "GET#index" do
     it "returns a sucessful response status and a content type of json" do
@@ -30,7 +31,7 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
   end
 
   describe "GET#show" do
-    it "should return an individual restaurant" do
+    it "should return an individual restaurant with reviews" do
 
       get :show, params: {id: restaurant1.id}
       returned_json = JSON.parse(response.body)
@@ -39,8 +40,16 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       expect(response.content_type).to eq("application/json")
 
       expect(returned_json.length).to eq 1
+      expect(returned_json["restaurant"].length).to eq 7
+
+      expect(returned_json["restaurant"]["reviews"].length).to eq 1
+      expect(returned_json["restaurant"]["reviews"][0].length).to eq 4
+
       expect(returned_json["restaurant"]["name"]).to eq "Soup Co"
       expect(returned_json["restaurant"]["address"]).to eq "300 Walker St"
+
+      expect(returned_json["restaurant"]["reviews"][0]["rating"]).to eq 4
+      expect(returned_json["restaurant"]["reviews"][0]["description"]).to eq "Waffle fries for the guys"
     end
   end
 
