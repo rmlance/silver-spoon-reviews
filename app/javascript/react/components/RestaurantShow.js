@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const RestaurantShow = props =>{
 
@@ -7,9 +8,11 @@ const RestaurantShow = props =>{
       <h3>{props.restaurant.name}</h3>
       <h5>Address:</h5>
       <p>{props.restaurant.address}</p>
-      <p>{props.restaurant.city}, {props.restaurant.state} {props.restaurant.zip}</p>
+      <p>{props.restaurant.neighborhood}</p>
       <p>Phone Number: {props.restaurant.phone}</p>
-      <p>Rating: {props.restaurant.rating}</p>
+      <p>URL: {props.restaurant.url}</p>
+      <Link to="/restaurants/new">Add a Restaurant</Link><br />
+      <Link to="/">Back to Home</Link>
     </div>
   )
 }
