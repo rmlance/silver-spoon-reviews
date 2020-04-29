@@ -22,6 +22,11 @@ class Api::V1::RestaurantsController < ApplicationController
     render json: Restaurant.find(params[:id])
   end
 
+  def delete
+    restaurant = Restaurant.find(params[:id])
+    restaurant.destroy
+  end
+
   protected
 
   def restaurant_params

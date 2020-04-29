@@ -36,6 +36,19 @@ const RestaurantShowContainer = props =>{
   .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])
 
+  const deleteRestaurant = (restaurant) =>{
+    if(window.confirm('Are you sure you would like to delete this restaurant?')) {
+      fetch(`/api/v1/restaurants/${restaurantId}`, {
+        method:'DELETE',
+        credentials: "same-origin",
+        header: { 'Accept' : 'application/json',
+        'Content-Type' : 'application/json'
+        }
+      })
+    }
+  }
+
+
   const reviewsList = restaurantReviews.map(review => {
     return (
       <ReviewTile
@@ -48,7 +61,10 @@ const RestaurantShowContainer = props =>{
 
   return(
     <div>
-      <RestaurantShow restaurant={restaurant}/>
+      <RestaurantShow
+        restaurant={restaurant}
+        deleteRestaurant={deleteRestaurant}
+      />
       {reviewsList}
     </div>
   )
