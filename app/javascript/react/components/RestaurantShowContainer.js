@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import RestaurantShow from './RestaurantShow'
 import ReviewTile from './ReviewTile'
+import ReviewForm from './ReviewForm'
 
 
 const RestaurantShowContainer = props =>{
@@ -12,6 +14,11 @@ const RestaurantShowContainer = props =>{
     url: ""
   })
   const [restaurantReviews, setRestaurantReviews] = useState([])
+  const [newReview, setNewReview] = useState({
+    rating: "",
+    description: ""
+  })
+  const [redirect, setRedirect] = useState(false)
 
   const restaurantId = props.match.params.id
 
@@ -36,6 +43,34 @@ const RestaurantShowContainer = props =>{
   .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])
 
+  const addNewReview = (formPayload) => {
+    fetch(`/api/v1/restaurants/${restaurantId}/reviews`, {
+      credentials: "same-origin",
+      method: 'POST',
+      body: JSON.stringify(formPayload),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if(response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(parsedNewReview => {
+      let newReview = parsedNewReview
+      setNewReview(newReview)
+      setRedirect(true)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
   const reviewsList = restaurantReviews.map(review => {
     return (
       <ReviewTile
@@ -46,10 +81,18 @@ const RestaurantShowContainer = props =>{
     )
   })
 
+  if (redirect) {
+    return <Redirect to={`/restaurants/${restaurantId}`} />
+  }
+
   return(
     <div>
-      <RestaurantShow restaurant={restaurant}/>
+      <RestaurantShow restaurant={restaurant} />
       {reviewsList}
+      <ReviewForm
+        id={restaurantId}
+        addNewReview={addNewReview}
+      />
     </div>
   )
 }
