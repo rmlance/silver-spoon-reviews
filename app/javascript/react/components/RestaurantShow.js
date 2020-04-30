@@ -1,7 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const RestaurantShow = props =>{
+const RestaurantShow = props => {
+
+  const handleDelete = event => {
+    event.preventDefault()
+    props.deleteRestaurant(props.restaurant)
+  }
 
   return(
     <div>
@@ -23,6 +28,7 @@ const RestaurantShow = props =>{
       </div>
       <div className="bottom-bar">
       <Link to="/restaurants/${props.restaurant.id}/edit">Edit This Restaurant</Link><br />
+      <button onClick={handleDelete}>Delete This Restaurant</button>
       <Link to="/">Back to Home</Link>
       </div>
     </div>
