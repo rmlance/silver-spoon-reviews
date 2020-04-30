@@ -24,14 +24,13 @@ body {
   color: #D5DED9;
 }
 
-h3, h1, h2 {
-  font-family: ‘Lobster Two’, cursive;
-  font-weight: 700;
-  color: #D5DED9;
+.top-bar-section, .right, .sign-stuff {
+  background-color: #99B2B7;
 }
 
-.top-bar-section, .right, p {
+.top-bar-section, .left, .sign-stuff-invisible {
   background-color: #99B2B7;
+  color: transparent;
 }
 
 .top-bar {

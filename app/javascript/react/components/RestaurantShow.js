@@ -5,17 +5,16 @@ const RestaurantShow = props =>{
 
   return(
     <div>
-<<<<<<< HEAD
+    <div className="callout plate center-this">
       <div className="grid-container">
-        <div className="callout">
-          <h3>{props.restaurant.name}</h3>
-          <div className="callout address grid-x">
-            <div className="cell medium-5">
+          <h3 className="show-title">{props.restaurant.name}</h3>
+          <div className="grid-x space-down">
+            <div className="cell medium-4">
               <h5>Address:</h5>
               <p>{props.restaurant.address}</p>
               <p>{props.restaurant.neighborhood}</p>
             </div>
-            <div className="cell medium-5">
+            <div className="cell medium-4">
               <p>Phone Number: {props.restaurant.phone}</p>
               <p>URL: {props.restaurant.url}</p>
             </div>
@@ -23,16 +22,7 @@ const RestaurantShow = props =>{
         </div>
       </div>
       <div className="bottom-bar">
-=======
-      <h3>{props.restaurant.name}</h3>
-      <h5>Address:</h5>
-      <p>{props.restaurant.address}</p>
-      <p>{props.restaurant.neighborhood}</p>
-      <p>Phone Number: {props.restaurant.phone}</p>
-      <p>URL: {props.restaurant.url}</p>
-      <Link to={`/restaurants/${props.restaurant.id}/edit`}>Edit this Restaurant</Link><br />
->>>>>>> d63a26da06e314c4fa5a825d2a89437afb01dc4e
-      <Link to="/restaurants/new">Add a Restaurant</Link><br />
+      <Link to="/restaurants/${props.restaurant.id}/edit">Edit This Restaurant</Link><br />
       <Link to="/">Back to Home</Link>
       </div>
     </div>

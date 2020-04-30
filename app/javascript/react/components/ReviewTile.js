@@ -3,11 +3,9 @@ import React from 'react'
 const ReviewTile = props => {
 
   return (
-    <div>
-      <ul>
-        <li>Rating: {props.rating}</li>
-        <li>Review: {props.description}</li>
-      </ul>
+    <div className="cell medium-5 small-5">
+        <p>Rating: {props.rating}</p>
+        <p>Review: {props.description}</p>
     </div>
   )
 }

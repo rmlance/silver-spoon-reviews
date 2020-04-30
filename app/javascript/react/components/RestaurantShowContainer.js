@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import RestaurantShow from './RestaurantShow'
 import ReviewTile from './ReviewTile'
-<<<<<<< HEAD
-=======
 import ReviewForm from './ReviewForm'
->>>>>>> d63a26da06e314c4fa5a825d2a89437afb01dc4e
 
 
 const RestaurantShowContainer = props =>{
@@ -16,13 +13,10 @@ const RestaurantShowContainer = props =>{
     url: ""
   })
   const [restaurantReviews, setRestaurantReviews] = useState([])
-<<<<<<< HEAD
-=======
   const [newReview, setNewReview] = useState({
     rating: "",
     description: ""
   })
->>>>>>> d63a26da06e314c4fa5a825d2a89437afb01dc4e
 
   const restaurantId = props.match.params.id
 
@@ -47,8 +41,6 @@ const RestaurantShowContainer = props =>{
   .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])
 
-<<<<<<< HEAD
-=======
   const addNewReview = (formPayload) => {
     fetch(`/api/v1/restaurants/${restaurantId}/reviews`, {
       credentials: "same-origin",
@@ -78,7 +70,6 @@ const RestaurantShowContainer = props =>{
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
->>>>>>> d63a26da06e314c4fa5a825d2a89437afb01dc4e
   const reviewsList = restaurantReviews.map(review => {
     return (
       <ReviewTile
@@ -89,22 +80,22 @@ const RestaurantShowContainer = props =>{
     )
   })
 
-<<<<<<< HEAD
-  return(
-    <div>
-      <RestaurantShow restaurant={restaurant}/>
-      {reviewsList}
-=======
 
   return(
     <div>
       <RestaurantShow restaurant={restaurant} />
-      {reviewsList}
-      <ReviewForm
-        id={restaurantId}
-        addNewReview={addNewReview}
-      />
->>>>>>> d63a26da06e314c4fa5a825d2a89437afb01dc4e
+      <div className="grid-container bottom-space">
+      <h4 className="show-title">
+        Reviews
+      </h4>
+        <div className="grid-x">
+          {reviewsList}
+        </div>
+        <ReviewForm
+          id={restaurantId}
+          addNewReview={addNewReview}
+        />
+      </div>
     </div>
   )
 }
