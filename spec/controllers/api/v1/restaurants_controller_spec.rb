@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe Api::V1::RestaurantsController, type: :controller do
   let!(:restaurant1) { Restaurant.create(name: "Soup Co", address:"300 Walker St", neighborhood:"Newton", phone: "781-908-5678", url: "wwww.SoupCo.com") }
   let!(:restaurant2) { Restaurant.create(name: "Pho", address:"300 main St", neighborhood:"natick", phone: "781-237-5678", url: "wwww.pho.com") }
+
   happy_body = { restaurant: { name: "Top of the Hub", address: "40 Main Street", neighborhood: "Prudential", phone: "123-341-1234", url: "www.topofthehub.com" } }
   sad_body = { restaurant: { address: "40 Main Street", neighborhood: "Prudential", phone: "123-341-1234", url: "www.topofthehub.com" } }
+
   let!(:review1) { Review.create(rating: 4, description: "Waffle fries for the guys", restaurant: restaurant1) }
 
   describe "GET#index" do

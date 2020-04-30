@@ -1,4 +1,6 @@
-@import url('https://fonts.google.com/specimen/Buenard');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url(‘https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@1,700&display=swap’);
+@import url(‘https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap’);
 
 body {
   background-color: #D9CEB2;
@@ -13,27 +15,24 @@ body {
   background-color: #948C75;
   padding: 60px 10px 60px 10px;
   border-color: #D5DED9;
+  color: white;
 }
 
-.top-bar, .top-bar-text, a {
-  font-family: 'Buenard', serif;
+.restaurant-name {
+  font-family: ‘Lobster Two’, cursive;
+  font-weight: 700;
   color: #D5DED9;
 }
 
-h3, h1, h2 {
-  font-family: 'Buenard', serif;
-  color: #D5DED9;
-  font-weight: 450;
-}
-
-.top-bar-section, .right, p {
+.top-bar-section, .right, .sign-stuff {
   background-color: #99B2B7;
+}
+
+.top-bar-section, .left, .sign-stuff-invisible {
+  background-color: #99B2B7;
+  color: transparent;
 }
 
 .top-bar {
   background-color: #99B2B7;
-}
-
-p {
-  color: #99B2B7;
 }

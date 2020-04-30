@@ -71,7 +71,6 @@ const ReviewForm = props => {
       <div className="button-group">
         <input className="button" type="submit" value="Submit Review" />
       </div>
-      <Link to="/">Back to Home</Link>
       </form>
     </div>
   )

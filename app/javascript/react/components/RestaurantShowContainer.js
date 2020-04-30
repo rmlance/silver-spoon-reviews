@@ -124,11 +124,18 @@ const RestaurantShowContainer = props =>  {
         restaurant={restaurant}
         deleteRestaurant={deleteRestaurant}
       />
-      {reviewsList}
-      <ReviewForm
-        id={restaurantId}
-        addNewReview={addNewReview}
-      />
+      <div className="grid-container bottom-space">
+      <h4 className="show-title">
+        Reviews
+      </h4>
+        <div className="grid-x">
+          {reviewsList}
+        </div>
+        <ReviewForm
+          id={restaurantId}
+          addNewReview={addNewReview}
+        />
+      </div>
     </div>
   )
 }
