@@ -146,4 +146,34 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
 
       expect(returned_json["error"][0]).to eq "Name can't be blank"
     end
+
+  describe "DELETE#destroy" do
+    it "deletes a new restaurant" do
+      restaurant = { id: restaurant1 }
+      admin = FactoryBot.create(:user, role: "admin")
+      sign_in admin
+      delete_json = restaurant
+
+      prev_count = Restaurant.count
+      delete :destroy, params: delete_json, format: :json
+      expect(Restaurant.count).to eq(prev_count - 1)
+      returned_json = JSON.parse(response.body)
+
+      expect(returned_json["notification"]).to eq "Restaurant successfully removed"
+    end
+
+    it "user cannot delete a restaurant" do
+      restaurant = { id: restaurant1 }
+      user = FactoryBot.create(:user, role: "member")
+      sign_in user
+      delete_json = restaurant
+
+      prev_count = Restaurant.count
+      delete :destroy, params: delete_json, format: :json
+      expect(Restaurant.count).to eq(prev_count)
+      returned_json = JSON.parse(response.body)
+
+      expect(returned_json["error"]).to eq "You do not have access to this action."
+    end
+  end
 end
