@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
 import RestaurantShow from './RestaurantShow'
 import ReviewTile from './ReviewTile'
 import ReviewForm from './ReviewForm'
@@ -18,7 +17,6 @@ const RestaurantShowContainer = props =>{
     rating: "",
     description: ""
   })
-  const [redirect, setRedirect] = useState(false)
 
   const restaurantId = props.match.params.id
 
@@ -64,9 +62,10 @@ const RestaurantShowContainer = props =>{
     })
     .then(response => response.json())
     .then(parsedNewReview => {
-      let newReview = parsedNewReview
-      setNewReview(newReview)
-      setRedirect(true)
+      setRestaurantReviews([
+        ...restaurantReviews,
+        parsedNewReview.review
+      ])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
@@ -81,9 +80,6 @@ const RestaurantShowContainer = props =>{
     )
   })
 
-  if (redirect) {
-    return <Redirect to={`/restaurants/${restaurantId}`} />
-  }
 
   return(
     <div>
