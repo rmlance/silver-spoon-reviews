@@ -49,7 +49,6 @@ const RestaurantShowContainer = props =>{
     }
   }
 
-
   const reviewsList = restaurantReviews.map(review => {
     return (
       <ReviewTile
