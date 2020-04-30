@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const RestaurantShow = props =>{
+const RestaurantShow = props => {
 
   return(
     <div>
@@ -13,7 +13,7 @@ const RestaurantShow = props =>{
       <p>URL: {props.restaurant.url}</p>
       <Link to="/restaurants/new">Add a Restaurant</Link><br />
       <Link to="/">Back to Home</Link><br />
-      <Link to='/restaurants' onClick={()=>props.deleteRestaurant(props.restaurant.id)}>Delete</Link>
+      <a href="/restaurants" onClick={()=> props.deleteRestaurant(props.restaurant)}>Delete</a>
     </div>
   )
 }

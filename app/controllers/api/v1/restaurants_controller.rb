@@ -1,5 +1,6 @@
 class Api::V1::RestaurantsController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
+  before_action :authorize_user, except: [:index, :show, :create]
 
   def index
     render json: Restaurant.all
@@ -22,7 +23,7 @@ class Api::V1::RestaurantsController < ApplicationController
     render json: Restaurant.find(params[:id])
   end
 
-  def delete
+  def destroy
     restaurant = Restaurant.find(params[:id])
     restaurant.destroy
   end
@@ -36,6 +37,12 @@ class Api::V1::RestaurantsController < ApplicationController
   def authenticate_user
     if !user_signed_in?
       render json: { error: "You do not have access to this page, please ensure you are signed in."}
+    end
+  end
+
+  def authorize_user
+    if !current_user.admin?
+      render json: { error: "You do not have access to this action."}
     end
   end
 end
