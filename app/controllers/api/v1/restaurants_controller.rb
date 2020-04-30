@@ -33,7 +33,11 @@ class Api::V1::RestaurantsController < ApplicationController
 
   def destroy
     restaurant = Restaurant.find(params[:id])
-    restaurant.destroy
+    if restaurant.destroy
+      render json: { notification: "Restaurant successfully removed" }
+    else
+      render json: { error: "Unable to process this request" }
+    end
   end
 
   protected
