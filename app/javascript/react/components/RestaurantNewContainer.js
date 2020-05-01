@@ -41,6 +41,7 @@ const RestaurantNewContainer = props => {
 
   return (
     <div>
+    <h4 className="show-title">Add a New Restaurant</h4>
       <RestaurantNewForm addNewRestaurant={addNewRestaurant} />
     </div>
   )

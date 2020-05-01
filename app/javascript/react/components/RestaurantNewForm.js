@@ -53,7 +53,7 @@ const RestaurantNewForm = props => {
 
     return(
       <div>
-        <div className="grid-container new-form-box">
+        <div className="grid-container new-form-box bottom-space">
           <form onSubmit={handleSubmit}>
             <ErrorList errors={errors} />
             <label className="name">
