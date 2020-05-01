@@ -53,7 +53,7 @@ const RestaurantEditForm = props =>{
 
   return(
     <div>
-      <div className="grid-container new-form-box">
+      <div className="grid-container new-form-box bottom-space">
         <form onSubmit={handleSubmit}>
           <ErrorList errors={errors} />
           <label className="name">
@@ -113,8 +113,8 @@ const RestaurantEditForm = props =>{
         </form>
     </div>
     <div className="bottom-bar">
-    <Link to={`/restaurants/${props.id}`}>Back to Details</Link><br />
-    <Link to="/">Back to Home</Link>
+      <Link to={`/restaurants/${props.id}`}>Back to Details</Link><br />
+      <Link to="/">Back to Home</Link>
     </div>
   </div>
 

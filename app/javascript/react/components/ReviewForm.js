@@ -46,7 +46,7 @@ const ReviewForm = props => {
 
   return (
     <div>
-      <p>Leave your review below:</p>
+    <h4 className="show-title">Leave Your Review Below</h4>
       <form onSubmit={handleSubmit}>
         <ErrorList errors={errors} />
         <label className="rating">

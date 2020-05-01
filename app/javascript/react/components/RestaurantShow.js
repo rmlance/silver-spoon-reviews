@@ -17,18 +17,21 @@ const RestaurantShow = props => {
             <div className="cell medium-4">
               <h5>Address:</h5>
               <p>{props.restaurant.address}</p>
+              <h5>Neighborhood:</h5>
               <p>{props.restaurant.neighborhood}</p>
             </div>
             <div className="cell medium-4">
-              <p>Phone Number: {props.restaurant.phone}</p>
-              <p>URL: {props.restaurant.url}</p>
+              <h5>Phone Number:</h5>
+              <p>{props.restaurant.phone}</p>
+              <h5>Website:</h5>
+              <p>{props.restaurant.url}</p>
             </div>
           </div>
         </div>
       </div>
       <div className="bottom-bar">
       <Link to={`/restaurants/${props.id}/edit`}>Edit This Restaurant</Link><br />
-      <button onClick={handleDelete}>Delete This Restaurant</button><br />
+      <button className="button-color" onClick={handleDelete}>Delete This Restaurant</button><br />
       <Link to="/">Back to Home</Link>
       </div>
     </div>
