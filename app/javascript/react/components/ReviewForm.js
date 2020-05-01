@@ -46,6 +46,7 @@ const ReviewForm = props => {
 
   return (
     <div>
+      <p>Leave your review below:</p>
       <form onSubmit={handleSubmit}>
         <ErrorList errors={errors} />
         <label className="rating">
