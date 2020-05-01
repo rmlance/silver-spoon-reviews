@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 
 import RestaurantEditForm from './RestaurantEditForm'
 
-const RestaurantEditContainer = props =>{
+const RestaurantEditContainer = props => {
   const [redirect, setRedirect] = useState(false)
   const [editRestaurantField, setEditRestaurantField] = useState({})
 
@@ -43,7 +43,11 @@ const RestaurantEditContainer = props =>{
 
   return (
     <div>
-      <RestaurantEditForm editRestaurant={editRestaurant} />
+      <h4 className="show-title">Edit Restaurant</h4>
+      <RestaurantEditForm
+        editRestaurant={editRestaurant}
+        id={restaurantId}
+        />
     </div>
   )
 }

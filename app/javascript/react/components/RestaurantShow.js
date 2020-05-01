@@ -17,6 +17,7 @@ const RestaurantShow = props => {
             <div className="cell medium-4">
               <h5>Address:</h5>
               <p>{props.restaurant.address}</p>
+              <h5>Neighborhood:</h5>
               <p>{props.restaurant.neighborhood}</p>
             </div>
             <div className="cell medium-4">
@@ -30,7 +31,7 @@ const RestaurantShow = props => {
       </div>
       <div className="bottom-bar">
       <Link to={`/restaurants/${props.id}/edit`}>Edit This Restaurant</Link><br />
-      <button onClick={handleDelete}>Delete This Restaurant</button><br />
+      <button className="button-color" onClick={handleDelete}>Delete This Restaurant</button><br />
       <Link to="/">Back to Home</Link>
       </div>
     </div>
