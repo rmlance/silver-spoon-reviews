@@ -122,6 +122,7 @@ const RestaurantShowContainer = props =>  {
       {errors}
       <RestaurantShow
         restaurant={restaurant}
+        id={restaurantId}
         deleteRestaurant={deleteRestaurant}
       />
       <div className="grid-container bottom-space">

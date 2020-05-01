@@ -29,8 +29,8 @@ const RestaurantShow = props => {
         </div>
       </div>
       <div className="bottom-bar">
-      <Link to="/restaurants/${props.restaurant.id}/edit">Edit This Restaurant</Link><br />
-      <button className="button-color" onClick={handleDelete}>Delete This Restaurant</button><br />
+      <Link to={`/restaurants/${props.id}/edit`}>Edit This Restaurant</Link><br />
+      <button onClick={handleDelete}>Delete This Restaurant</button><br />
       <Link to="/">Back to Home</Link>
       </div>
     </div>
